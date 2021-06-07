@@ -1,0 +1,21 @@
+<h2>Lista Veículos Movimento Mensalistas!</h2>
+
+<ul>
+    {% for movmensalista in movmensalistas %}
+    <li>
+        <a href="{% url 'core_movmensalista_update' movmensalista.id %}">
+            {{ movmensalista.mensalista }} - {{ movmensalista.dt_pgto }} </a>
+    </li>
+
+    {% endfor %}
+</ul>
+
+<form action="{% url 'core_movmensalista_novo' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Cadastrar</button>
+
+</form>
+
+<

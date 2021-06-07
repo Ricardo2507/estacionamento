@@ -1,0 +1,19 @@
+<h2>Lista Veículos Rotativos!</h2>
+
+<ul>
+    {% for rotativo in rotativos %}
+    <li>
+        <a href="{% url 'core_movrotativos_update' rotativo.id %}">
+            {{ rotativo.checkin }} - {{ rotativo.veiculo.placa }}</a>
+    </li>
+
+    {% endfor %}
+</ul>
+
+<form action="{% url 'core_movrotativos_novo' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">Cadastrar</button>
+
+</form>
