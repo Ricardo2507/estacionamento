@@ -29,7 +29,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['rscoestacionamento.herokuapp.com']
+# ALLOWED_HOSTS = ['rscoestacionamento.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -41,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
     'core',
+    'website',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +131,15 @@ STATIC_URL = '/static/'
 # para deploy
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# url de login
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL  = 'core_home'
+LOGOUT_REDIRECT_URL = 'core_home'
